@@ -11,7 +11,14 @@ $ vagrant up
 
 ```base
 $ vagrant ssh controller
-$ cd /vagrant/ansilbe
-$ source ./hacking/env-setup
 # run your ansible commands as normal
+```
+
+### Setting up the slaves
+
+The slaves are only basically setup using vagrant.  The actual setup is done via ansible.
+
+```bash
+controller:~ $ ansible-playbook slave.yml
+# sets up the slaves
 ```
