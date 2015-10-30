@@ -1,0 +1,11 @@
+---
+# This file sets up the slave
+
+- hosts: slaves
+
+  tasks:
+    - name: install golang
+      become: true # sudo
+      apt:
+        name: golang
+        state: present

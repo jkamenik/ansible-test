@@ -65,6 +65,7 @@ move id_rsa .ssh 600
 move id_rsa.pub .ssh 600
 link .bash_ansible
 link ansible_hosts
+link slave.yml
 
 # fix permissions
 sudo chown -R vagrant:vagrant /home/vagrant
