@@ -31,10 +31,20 @@ ln -s $ANSIBLE_PATH $DEST_PATH/ansible
 # move files
 function move(){
   local file=$BASE_PATH/$1
-  local dest=$DEST_PATH/$2
+  local dest=$DEST_PATH
+
+  if [ -n "$2" ]; then
+    dest="$dest/$2/$1"
+  else
+    dest="$dest/$1"
+  fi
 
   echo "moving $file to $dest"
   cp $file $dest
+
+  if [ -n "$3" ]; then
+    chmod $3 $dest
+  fi
 }
 function link(){
   local file=$BASE_PATH/$1
@@ -51,6 +61,8 @@ function link(){
   ln -s $file $dest
 }
 move .bashrc
+move id_rsa .ssh 600
+move id_rsa.pub .ssh 600
 link .bash_ansible
 link ansible_hosts
 
