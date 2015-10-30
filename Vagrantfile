@@ -20,11 +20,6 @@ Vagrant.configure('2') do |config|
       config.vm.network "private_network", ip: "192.168.100.#{ip}"
 
       config.vm.provision :shell, path: 'slave.sh'
-
-      # config.vm.provider "libvirt" do |v|
-      #   v.memory = 16 * 1024 # X GB
-      #   v.cpus   = 4
-      # end
     end
   end
 end
