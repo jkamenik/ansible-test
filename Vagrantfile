@@ -6,16 +6,9 @@ Vagrant.configure('2') do |config|
   config.vm.define 'controller' do
     config.vm.hostname = 'jenkins'
 
-    # ensure the user/group matches the jenkins user
-    config.vm.synced_folder ".", "/vagrant", :mount_options => ["uid=5678,gid=65534"]
-
     config.vm.network "private_network", ip: '192.168.100.10'
 
     config.vm.provision :shell, path: "controller.sh"
-
-    # config.vm.provider "libvirt" do |v|
-    #   v.memory = 2 * 1024 # 2 GB
-    # end
   end
 
   [0, 1].each do |n|
